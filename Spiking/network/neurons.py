@@ -13,7 +13,7 @@ class LIFNeuron:
 
 class SRMNeuron:
     """Spike Response Model with Escape Noise.
-    
+
     Ref: Jang, Simeone, Gardner, and Gruning -
             'An Introduction to Spiking Neural Networks: Probabilist Models,
             Learning Rules and Applications'
@@ -61,6 +61,7 @@ class SRMNeuron:
         return (np.exp(-t) - np.exp(-t/self.ff_td))
 
     def _b(self, t):
+        # exponential kernel for feedback connection
 
         return (-np.exp(-t))
 
