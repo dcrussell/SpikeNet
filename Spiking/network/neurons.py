@@ -54,15 +54,13 @@ class SRMNeuron:
         self.fb_td = feedback_td
 
 
-
     def _a(self, t):
         # exponential kernel for feedforward spikes
-
         return (np.exp(-t) - np.exp(-t/self.ff_td))
 
     def _b(self, t):
-        # exponential kernel for feedback connection
 
+        # exponential kernel for feedback connection
         return (-np.exp(-t))
 
     def _sigmoid(self, x):
@@ -74,12 +72,9 @@ class SRMNeuron:
         # get windowed view for spikes
         x_shape = x.shape
         x = x[:, max(0, x_shape[1]-self.window_size): max(0, x_shape[1]-self.window_size) + self.window_size]
-
-
-
-
         potential = self.rest + self.gamma
         for i in range(x.shape[0]):
+
             # x is indexed at -1-j since the most recent spikes will be at the end
             # probably a better way to go about this such as having the network
             # reverse each nodes spike train before feeding it to the next node
@@ -88,8 +83,6 @@ class SRMNeuron:
             filtered_feedback = 0
             for j in range(x.shape[1]):
                 filtered_forward += self._a((j)*self.dt)* x[i, -1-j]
-
-
             for j in range(len(self.spikes)):
                 filtered_feedback += self._b((j) * self.dt) * self.spikes[-1-j]
 
