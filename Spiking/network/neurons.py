@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 
 #TODO:
-#   - Fix Multiple neuron connections
+
 class LIFNeuron:
     pass
 
