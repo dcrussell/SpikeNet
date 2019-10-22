@@ -23,6 +23,7 @@ class SRMNeuron:
 
     def __init__(self,
                  n_connections,
+                 name,
                  rest = -70,
                  dt = 0.1,
                  feedforward_td = 0.1,
@@ -32,7 +33,7 @@ class SRMNeuron:
 
         # membrane potential
         self.rest = rest
-
+        self.name = name
         self.window_size = window
         self.potential = rest
 
